@@ -4,7 +4,7 @@
       transition="dialog-bottom-transition" >
     <template v-slot:activator="">
     <v-container fluid>
-      <div class="seat-title-box text-center" >강단</div>
+      <div class="seat-title-box text-center" @click="seatsUpdate()">강단</div>
       <br>
         <div class= "chapel">
           <div v-for="i in seats.seat_line_1" v-bind:key="i.id">
@@ -223,7 +223,62 @@
         </v-card>
       </v-dialog>
 
+      <v-dialog v-model="seatsUpdateOk" >
+        <v-card>
+          <v-card-title>
+            <span class="headline">관리자 확인</span> 
+          </v-card-title>
+            <v-container>
+              <v-row>
+                    <v-col cols="12" sm="2" md="12">
+                        <v-text-field v-model="seatsUpdateOkPw" type="password"  label="관리자 확인"></v-text-field>
+                    </v-col> 
+                </v-row> 
+            </v-container>
+            <v-card-actions>
+            <v-spacer></v-spacer>
+              <v-btn color="#009624" dark @click="seatsOk()">확인</v-btn>
+              <v-btn color="red" dark @click="seatsClose()">취소</v-btn>
+            </v-card-actions>
+        </v-card>
+      </v-dialog>
 
+      <v-dialog v-model="seatsActiveUpdate" >
+        <v-card>
+          <v-card-title>
+            <span class="headline">좌석 단계별 설정</span> 
+          </v-card-title>
+            <v-container>
+              <v-row>
+                <v-col>
+                    <v-col cols="12" sm="2" md="12">
+                      <!--  <v-text-field v-model="seatsActviceStep" label="50 or 30"></v-text-field> -->
+                      <v-radio-group
+                        v-model="seatsActviceStep"
+                        column
+                      >
+                        <v-radio
+                          label="거리두기 1 단계 수용 좌석 50%"
+                          color="red"
+                          value="50"
+                        ></v-radio>
+                        <v-radio
+                          label="거리두기 1.5 단계 수용  좌석 30%"
+                          color="primary"
+                          value="30"
+                        ></v-radio>
+                      </v-radio-group>
+                    </v-col> 
+                  </v-col> 
+                </v-row> 
+            </v-container>
+            <v-card-actions>
+            <v-spacer></v-spacer>
+              <v-btn color="#009624" dark @click="seatsActiveUpdateOk()">확인</v-btn>
+              <v-btn color="red" dark @click="seatsActiveUpdateClose()">취소</v-btn>
+            </v-card-actions>
+        </v-card>
+      </v-dialog>
   </div>
 
 
@@ -261,6 +316,12 @@ export default {
       euodiaOk:false,
       loading:false,
 
+      seatsUpdateOk:false,
+      seatsUpdateOkPw:'',
+
+      seatsActiveUpdate:false,
+      seatsActviceStep:30,
+
       euodiaOkpw:'',
       euodiaOkid:{
         id:''
@@ -291,6 +352,49 @@ export default {
     }) 
   },
     methods: {
+        seatsUpdate(){
+          this.seatsUpdateOk = true
+        },
+
+        seatsOk(){
+          if(this.seatsUpdateOkPw === 'sds3570'){
+            this.seatsUpdateOk = false
+            this.seatsActiveUpdate = true    
+            this.seatsUpdateOkPw = ''
+
+          }
+        },
+
+        seatsClose(){
+          this.seatsUpdateOkPw = ''
+          this.seatsUpdateOk = false
+
+        },
+
+        seatsActiveUpdateOk(){
+          // alert("감사합니다 : ", this.seatsActviceStep)
+          console.log("this.seatsActviceStep :",this.seatsActviceStep )
+
+          let param = new Object()
+          param.step =  this.seatsActviceStep
+
+          service.seatsChange(param)
+            .then(result => {
+              if(result){
+                console.log('result',result)
+                console.log('result.data',result.data)
+                this.$store.dispatch('updateList', result.data)
+              }else{
+                alert("저장 실패 관리자에게 문의 하세요")
+              }
+            })
+          this.seatsActiveUpdate = false
+        },
+
+        seatsActiveUpdateClose(){
+          this.seatsActiveUpdate = false
+        },
+
         sendMessage (data) { 
           this.$socket.emit('chat',data); 
         },

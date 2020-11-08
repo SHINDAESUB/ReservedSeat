@@ -18,6 +18,15 @@ export default {
         }catch(error){
             return error.message
         }
-    }
+    },
+
+    async seatsChange(param){
+        try{
+            const result = await axios.post('/seatsChange',{ params: param })
+            return result
+        }catch(error){
+            return error.message
+        }
+    }    
 
 }

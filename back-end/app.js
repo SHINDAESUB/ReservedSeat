@@ -45,8 +45,6 @@ app.set('port',process.env.PORT || 3000);
 app.get('/api/getSeats',(req,res) => {
     const jsonFile = fs.readFileSync('./json/seats.json', 'utf8');    
     const jsonData = JSON.parse(jsonFile);
-
-    
     res.send(jsonData)
 })
 
@@ -78,6 +76,53 @@ app.post('/api/seatsModify',(req,res) => {
         });
     })
 })
+
+app.post('/api/seatsChange',(req,res) => {
+    console.log("선택한 단계 :"+ req.body.params.step)
+
+    if(req.body.params.step === '30'){
+        console.log("30프로")
+            fs.readFile('./json/seats(30%).json', 'utf8',(err ,data30) => {
+                fs.writeFile('./json/seats.json', data30, (err)=>{
+                    if (err){
+
+                        res.send(false)
+                    }else{
+                        console.log('JSON FILE 수정 완료');
+                    }
+                });
+            })
+
+            const jsonFile = fs.readFileSync('./json/seats.json', 'utf8');    
+            const jsonData = JSON.parse(jsonFile);
+            res.send(jsonData)
+
+    }else if(req.body.params.step === '50'){
+        console.log("50프로")
+        fs.readFile('./json/seats(50%).json', 'utf8',(err ,data50) => {
+            // let JSON50 = JSON.parse(data)
+            fs.writeFile('./json/seats.json', data50, (err)=>{
+                if (err){
+
+                    res.send(false)
+                }else{
+                    console.log('JSON FILE 수정 완료');
+                }
+            });
+        })
+
+        const jsonFile = fs.readFileSync('./json/seats.json', 'utf8');    
+        const jsonData = JSON.parse(jsonFile);
+        res.send(jsonData)
+
+    }else{
+        res.send(false)
+    }
+
+})
+
+
+
 
 http.createServer(app).listen(app.get('port'),function(){
     console.log('WebServer Port: ' +app.get('port'))

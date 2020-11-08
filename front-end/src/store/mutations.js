@@ -6,7 +6,10 @@ export default {
     },
 
     updateList (state , data){
-        state.seats = Object.assign({}, data)
+
+        state.seats = []
+        state.seats = data
+
     },
 
     modifySeats(state , payload){

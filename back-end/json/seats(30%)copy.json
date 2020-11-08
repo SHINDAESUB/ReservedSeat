@@ -3,7 +3,7 @@
         {
             "id": "A-1",
             "seat_num": 1,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -17,7 +17,7 @@
         {
             "id": "A-3",
             "seat_num": 3,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -31,7 +31,7 @@
         {
             "id": "A-5",
             "seat_num": 5,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -59,7 +59,7 @@
         {
             "id": "A-8",
             "seat_num": 9,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -108,7 +108,7 @@
         {
             "id": "A-13",
             "seat_num": 16,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -157,7 +157,7 @@
         {
             "id": "A-19",
             "seat_num": 23,
-            "seat_active": 4,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -327,7 +327,7 @@
         {
             "id": "B-18",
             "seat_num": 22,
-            "seat_active": 4,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -371,7 +371,7 @@
         {
             "id": "C-3",
             "seat_num": 3,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -413,7 +413,7 @@
         {
             "id": "C-8",
             "seat_num": 9,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -462,7 +462,7 @@
         {
             "id": "C-13",
             "seat_num": 16,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -511,7 +511,7 @@
         {
             "id": "C-19",
             "seat_num": 23,
-            "seat_active": 4,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -681,7 +681,7 @@
         {
             "id": "D-18",
             "seat_num": 22,
-            "seat_active": 4,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -725,7 +725,7 @@
         {
             "id": "E-3",
             "seat_num": 3,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -767,7 +767,7 @@
         {
             "id": "E-8",
             "seat_num": 9,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -816,7 +816,7 @@
         {
             "id": "E-13",
             "seat_num": 16,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -865,7 +865,7 @@
         {
             "id": "E-19",
             "seat_num": 23,
-            "seat_active": 4,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1035,7 +1035,7 @@
         {
             "id": "F-18",
             "seat_num": 22,
-            "seat_active": 4,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1079,7 +1079,7 @@
         {
             "id": "G-3",
             "seat_num": 3,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1121,7 +1121,7 @@
         {
             "id": "G-8",
             "seat_num": 9,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1170,7 +1170,7 @@
         {
             "id": "G-13",
             "seat_num": 16,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1219,7 +1219,7 @@
         {
             "id": "G-19",
             "seat_num": 23,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1389,7 +1389,7 @@
         {
             "id": "H-18",
             "seat_num": 22,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1433,7 +1433,7 @@
         {
             "id": "I-3",
             "seat_num": 3,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1475,7 +1475,7 @@
         {
             "id": "I-8",
             "seat_num": 9,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1524,7 +1524,7 @@
         {
             "id": "I-13",
             "seat_num": 16,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1573,7 +1573,7 @@
         {
             "id": "I-19",
             "seat_num": 23,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1743,7 +1743,7 @@
         {
             "id": "J-18",
             "seat_num": 22,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1787,7 +1787,7 @@
         {
             "id": "K-3",
             "seat_num": 3,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1829,7 +1829,7 @@
         {
             "id": "K-8",
             "seat_num": 9,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1878,7 +1878,7 @@
         {
             "id": "K-13",
             "seat_num": 16,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -1927,7 +1927,7 @@
         {
             "id": "K-19",
             "seat_num": 23,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -2097,7 +2097,7 @@
         {
             "id": "L-18",
             "seat_num": 22,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -2141,7 +2141,7 @@
         {
             "id": "M-3",
             "seat_num": 3,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -2183,7 +2183,7 @@
         {
             "id": "M-8",
             "seat_num": 9,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -2232,7 +2232,7 @@
         {
             "id": "M-13",
             "seat_num": 16,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
@@ -2281,7 +2281,7 @@
         {
             "id": "M-19",
             "seat_num": 23,
-            "seat_active": 1,
+            "seat_active": 2,
             "name": "",
             "pw": ""
         },
