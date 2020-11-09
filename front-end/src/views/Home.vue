@@ -302,11 +302,6 @@ export default {
       'seats'
     ]),
 
-    // formTitle () {
-    //   return this.editedIndex === -1 ? 'New Item' : this.selectedItem.project_name
-    // },
-
-
   },
   data(){
     return{
@@ -357,7 +352,7 @@ export default {
         },
 
         seatsOk(){
-          if(this.seatsUpdateOkPw === 'sds3570'){
+          if(this.seatsUpdateOkPw === 'shindaesub'){
             this.seatsUpdateOk = false
             this.seatsActiveUpdate = true    
             this.seatsUpdateOkPw = ''
@@ -384,6 +379,7 @@ export default {
                 console.log('result',result)
                 console.log('result.data',result.data)
                 this.$store.dispatch('updateList', result.data)
+                this.$router.go(0); // 좋은 방법인지는 모르겠으나 새로고침 하기 위함
               }else{
                 alert("저장 실패 관리자에게 문의 하세요")
               }

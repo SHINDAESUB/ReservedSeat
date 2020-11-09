@@ -94,8 +94,8 @@
         {
             "id": "A-11",
             "seat_num": 14,
-            "seat_active": 4,
-            "name": "교역자",
+            "seat_active": 2,
+            "name": "",
             "pw": ""
         },
         {
@@ -108,8 +108,8 @@
         {
             "id": "A-13",
             "seat_num": 16,
-            "seat_active": 2,
-            "name": "",
+            "seat_active": 4,
+            "name": "교역자",
             "pw": ""
         },
         {

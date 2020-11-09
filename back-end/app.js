@@ -4,9 +4,23 @@ const express = require('express')
     path = require('path')
     app = express()
     bodyParser = require('body-parser')
+    schedule = require('node-schedule');
     // mysql = require('mysql')
     // db  = require('./database.js')
 
+//초 분 시간 일 월 요일     
+var j = schedule.scheduleJob("0 0 0 * * 0", function() {
+    fs.readFile('./json/seats(50%).json', 'utf8',(err ,data50) => {
+        // let JSON50 = JSON.parse(data)
+        fs.writeFile('./json/seats.json', data50, (err)=>{
+            if (err){
+                console.log('데이터 리셋 실패')
+            }else{
+                console.log('데이터 리셋 완료');
+            }
+        });
+    })
+});
 
 const server = app.listen(3001, function() {
     console.log('소켓 port 3001');
@@ -120,9 +134,6 @@ app.post('/api/seatsChange',(req,res) => {
     }
 
 })
-
-
-
 
 http.createServer(app).listen(app.get('port'),function(){
     console.log('WebServer Port: ' +app.get('port'))
