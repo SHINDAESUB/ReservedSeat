@@ -6,7 +6,10 @@ import vuetify from './plugins/vuetify';
 import axios from 'axios'
 import io from 'socket.io-client'; 
 /** 모바일 데스크탑 통신이 안될경우 localhost:port 가 아닌 구동되는 IP를적으면된다. */
-// const socket = io('http://localhost:3001'); 
+// const socket = io('http://localhost:3001');  
+
+// const socket = io('http://192.168.53.31:3001');  
+
 const socket = io('http://3.34.185.148:3001');
 
 

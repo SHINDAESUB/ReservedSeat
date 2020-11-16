@@ -11,6 +11,8 @@ Vue.use(Vuex)
 
 const state = {
   seats : [],
+  activeSeats : 0, //선택가능 좌석
+  selectedSeats : 0 //선택한 좌석
 }
 
 

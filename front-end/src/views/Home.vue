@@ -126,14 +126,15 @@
               <div v-if="i.seat_active === 5" class="blueBox" @click="deleteSelect(i,'seat_line_13')">{{i.id}}<br>{{i.name}}</div>
           </div>
         </div>  
-         <br>
+        <br>
       <div class="seat-title-box text-center" >입구</div>
-              <div class= "chapel-text">
-              <div  class="seat enable"></div>선택가능
-              <div  class="seat disable"></div>선택불가
-              <div  class="seat greenBox"></div>지정석
-              <div  class="seat blueBox"></div>선택완료
-        </div>
+        <div class="count"> <div class="grey--text ">좌석 현황 : <strong class="primary--text ">{{selectedSeats}}</strong> / <strong class="grey--text "> {{activeSeats}}</strong></div></div>
+        <div class= "chapel-text">
+        <div  class="seat enable"></div>선택가능
+        <div  class="seat disable"></div>선택불가
+        <div  class="seat greenBox"></div>지정좌석
+        <div  class="seat blueBox"></div>선택완료
+      </div>
     </v-container>
       </template>
       <v-card>
@@ -176,13 +177,13 @@
           <v-card-text v-if="loading===false">
             <v-container>
               <v-row>
-                    <v-col cols="12" sm="2" md="12">
+                    <v-col cols="12" sm="12" md="12">
                         <v-text-field v-model="selectedItem.seatId" readonly  label="좌석"></v-text-field>
                     </v-col>
-                    <v-col cols="12" sm="2" md="12">
+                    <v-col cols="12" sm="12" md="12">
                         <v-text-field  v-model="selectedItem.name" readonly  label="예약자 이름"></v-text-field>
                     </v-col>
-                    <v-col cols="12" sm="2" md="12">
+                    <v-col cols="12" sm="12" md="12">
                         <v-text-field  v-model="selectedItem.pwOk"  type="password" label="비밀번호"></v-text-field>
                     </v-col>          
                 </v-row> 
@@ -210,7 +211,7 @@
           </v-card-title>
             <v-container>
               <v-row>
-                    <v-col cols="12" sm="2" md="12">
+                    <v-col cols="12" sm="12" md="12">
                         <v-text-field v-model="euodiaOkpw" type="password"  label="유오디아"></v-text-field>
                     </v-col> 
                 </v-row> 
@@ -230,7 +231,7 @@
           </v-card-title>
             <v-container>
               <v-row>
-                    <v-col cols="12" sm="2" md="12">
+                    <v-col cols="12" sm="12" md="12">
                         <v-text-field v-model="seatsUpdateOkPw" type="password"  label="관리자 확인"></v-text-field>
                     </v-col> 
                 </v-row> 
@@ -251,7 +252,7 @@
             <v-container>
               <v-row>
                 <v-col>
-                    <v-col cols="12" sm="2" md="12">
+                    <v-col cols="12" sm="12" md="12">
                       <!--  <v-text-field v-model="seatsActviceStep" label="50 or 30"></v-text-field> -->
                       <v-radio-group
                         v-model="seatsActviceStep"
@@ -299,7 +300,9 @@ export default {
   },
   computed: {
     ...mapState([
-      'seats'
+      'seats',
+      'selectedSeats',
+      'activeSeats'
     ]),
 
   },
@@ -367,17 +370,12 @@ export default {
         },
 
         seatsActiveUpdateOk(){
-          // alert("감사합니다 : ", this.seatsActviceStep)
-          console.log("this.seatsActviceStep :",this.seatsActviceStep )
-
           let param = new Object()
           param.step =  this.seatsActviceStep
 
           service.seatsChange(param)
             .then(result => {
               if(result){
-                console.log('result',result)
-                console.log('result.data',result.data)
                 this.$store.dispatch('updateList', result.data)
                 this.$router.go(0); // 좋은 방법인지는 모르겠으나 새로고침 하기 위함
               }else{
@@ -453,7 +451,7 @@ export default {
             .then(result => {
               this.loading = false
               if(result.data){
-                this.$store.dispatch('modifySeats', param)
+                // this.$store.dispatch('modifySeats', param)
                 this.selectedItem = Object.assign({}, this.defaultItem)
                 this.sendMessage(param)
               }else{
@@ -502,7 +500,7 @@ export default {
               .then(result => {
                 this.loading = false
                 if(result.data){
-                  this.$store.dispatch('modifySeats', param)
+                  // this.$store.dispatch('modifySeats', param)
                   this.selectedItem = Object.assign({}, this.defaultItem)
                   this.sendMessage(param)
                 }else{
@@ -558,6 +556,19 @@ export default {
     width: 100%;
     height: 100%;
   }
+
+  .count{
+    display: flex;
+    flex-direction: row; 
+    /* align-items:center; */
+    width: 100%;
+    height: 100%;
+  }
+
+  /* .count{
+
+  } */
+
   .line {
       overflow: hidden;
   }
@@ -645,27 +656,294 @@ export default {
 
   .seat-title-box{
     /* background-color: #5ABA85; */
-    color: #5ABA85;
+    /* color: #5ABA85; */
+    /* color:red; */
     font-size: 2rem;
     border: 2px solid #5ABA85;
     border-radius: 2px;
-    width: 600px;
+    /* width: 1024px; */
     /* width: 100%; */
+    width: 900px;
 
     /* widows: ; */
     margin: 0 auto;
   }
 
 
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .chapel{
+    display: flex;
+    flex-direction: row;
+    /* justify-content:center; */
+    /* align-items:center; */
+    
+  }
+
+  .count{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    /* align-items:center; */
+    width: 100%;
+    height: 100%;
+  }
+
+  .chapel-text{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .chapel-text .seat{
+    color:#fff;
+    margin: 1px;
+    width: 30px;
+    height: 30px;
+    padding-right: 10px;
+    border-radius: 3px;
+    font-size: 0.2rem;
+    text-align: center; 
+    }
+
+  .chapel-text strong{
+    color:#9E9E9E;
+    font-size: 0.5rem;
+    padding:0px;
+    margin: 0px;
+    /* padding-right: 30px;
+    padding-left: 30px; */
+  }      
+
+  .seat {
+      color:#fff;
+      margin: 2px;
+      /* float: left; */
+      width: 30px;
+      height: 30px;
+      /* min-width: 68px; */
+      /* min-height: 65px; */
+      border-radius: 3px;
+      /* font-size: 0.7rem; */
+      font-size: 0.5rem;
+      text-align: center; 
+  }
+  .enable {
+      background:#9E9E9E;
+  }
+
+  .enable:hover {
+      background: black;
+  }
+
+  .disable {
+      background:  #5ABA85;
+  }
+
+  .greenBox {
+    background: #B4D8C3;
+    color: #fff;
+    /* font-family: 'Helvetica', 'Arial', sans-serif; */
+    font-size: 0.5rem;
+    /* font-weight: thin; */
+    /* text-align: center; */
+    text-align: center; 
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    margin: 2px;
+  }
+
+  .greenBox2 {
+    background: #B4D8C3;
+    color: #5ABA85;
+    /* font-family: 'Helvetica', 'Arial', sans-serif; */
+    font-size: 1rem;
+    /* font-weight: bold; */
+    /* text-align: center; */
+    text-align: center; 
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    margin: 2px;
+  }
+  .blueBox{
+    background: #1976D2;
+      color:#fff;
+      margin: 2px;
+      /* float: left; */
+      width: 30px;
+      height: 30px;
+      /* min-width: 68px; */
+      /* min-height: 65px; */
+      border-radius: 3px;
+      /* font-size: 0.7rem; */
+      font-size: 0.5rem;
+      text-align: center; 
+  }
+
+  .seat-title-box{
+    /* background-color: #5ABA85; */
+    color: #5ABA85;
+    font-size: 0.5rem;
+    border: 2px solid #5ABA85;
+    border-radius: 2px;
+    /* width: 1024px; */
+    width: 100%;
+
+    /* width: 100%; */
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+
+  .chapel{
+    display: flex;
+    flex-direction: row;
+    /* justify-content:center; */
+    /* align-items:center; */
+    
+  }
+
+  .count{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    /* align-items:center; */
+    width: 100%;
+    height: 100%;
+  }
+
+  .chapel-text{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .chapel-text .seat{
+    color:#fff;
+    margin: 1px;
+    width: 40px;
+    height: 40px;
+    padding-right: 10px;
+    border-radius: 3px;
+    font-size: 1rem;
+    text-align: center; 
+    }
+
+  .chapel-text strong{
+    color:#9E9E9E;
+    font-size: 1rem;
+    padding:0px;
+    margin: 0px;
+    /* padding-right: 30px;
+    padding-left: 30px; */
+  }      
+
+  .seat {
+      color:#fff;
+      margin: 2px;
+      /* float: left; */
+      width: 50px;
+      height: 50px;
+      /* min-width: 68px; */
+      /* min-height: 65px; */
+      border-radius: 3px;
+      /* font-size: 0.7rem; */
+      font-size: 1rem;
+      text-align: center; 
+  }
+  .enable {
+      background:#9E9E9E;
+  }
+
+  .enable:hover {
+      background: black;
+  }
+
+  .disable {
+      background:  #5ABA85;
+  }
+
+  .greenBox {
+    background: #B4D8C3;
+    color: #fff;
+    /* font-family: 'Helvetica', 'Arial', sans-serif; */
+    font-size: 1rem;
+    /* font-weight: thin; */
+    /* text-align: center; */
+    text-align: center; 
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+    margin: 2px;
+  }
+
+  .greenBox2 {
+    background: #B4D8C3;
+    color: #5ABA85;
+    /* font-family: 'Helvetica', 'Arial', sans-serif; */
+    font-size: 1rem;
+    /* font-weight: bold; */
+    /* text-align: center; */
+    text-align: center; 
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+    margin: 2px;
+  }
+  .blueBox{
+    background: #1976D2;
+      color:#fff;
+      margin: 2px;
+      /* float: left; */
+      width: 50px;
+      height: 50px;
+      /* min-width: 68px; */
+      /* min-height: 65px; */
+      border-radius: 3px;
+      /* font-size: 0.7rem; */
+      font-size: 1rem;
+      text-align: center; 
+  }
+
+  .seat-title-box{
+    /* background-color: #5ABA85; */
+    color: #5ABA85;
+    font-size: 2rem;
+    border: 2px solid #5ABA85;
+    border-radius: 2px;
+    /* width: 1024px; */
+    width: 100%;
+
+    /* width: 100%; */
+    margin: 0 auto;
+  }
+}
 
 
-@media screen and (min-width: 769px) {
+
+@media screen and (min-width: 1366px) {
 
   .chapel{
     display: flex;
     flex-direction: row;
     justify-content:center;
     align-items:center;
+  }
+
+  .count{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    height: 100%;
   }
 
   .chapel-text{
@@ -749,7 +1027,7 @@ export default {
     margin: 2px;
   }
   .blueBox{
-    background: rgb(75, 75, 224);
+    background: #1976D2;
       color:#fff;
       margin: 2px;
       /* float: left; */
