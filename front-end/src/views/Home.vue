@@ -656,14 +656,12 @@ export default {
 
   .seat-title-box{
     /* background-color: #5ABA85; */
-    /* color: #5ABA85; */
+    color: #5ABA85;
     /* color:red; */
     font-size: 2rem;
     border: 2px solid #5ABA85;
     border-radius: 2px;
-    /* width: 1024px; */
-    /* width: 100%; */
-    width: 900px;
+    width: 610px;
 
     /* widows: ; */
     margin: 0 auto;
