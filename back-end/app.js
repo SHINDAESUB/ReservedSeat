@@ -17,15 +17,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('port',process.env.PORT || 3000);
 
 //초 분 시간 일 월 요일     
-var j = schedule.scheduleJob("59 59 23 * * 0", function() { 
-        fs.readFile('./json/'+seatsMode, 'utf8',(err ,data50) => {
-            // let JSON50 = JSON.parse(data)
+var j = schedule.scheduleJob("0 0 0 * * 1", function() { 
+        fs.readFile('./json/'+seatsMode, 'utf8',(err ,result) => {
             console.log("seatsMode :",seatsMode)
-            fs.writeFile('./json/seats.json', data50, (err)=>{
+            fs.writeFile('./json/seats.json', result, (err)=>{
                 if (err){
                     console.log('데이터 리셋 실패')
                 }else{
                     console.log('데이터 리셋 완료');
+                    console.log('현재 모드는? :',seatsMode);
                 }
             });
         })
@@ -81,7 +81,9 @@ app.post('/api/seatsModify',(req,res) => {
 
 app.post('/api/seatsChange',(req,res) => {
     console.log("선택한 단계 :"+ req.body.params.step)
-    if(req.body.params.step === '30'){
+    if(req.body.params.step === '10'){
+        seatsMode = 'seats(10%).json'
+    }else if(req.body.params.step === '30') {
         seatsMode = 'seats(30%).json'
     }else if(req.body.params.step === '50') {
         seatsMode = 'seats(50%).json'
@@ -89,8 +91,8 @@ app.post('/api/seatsChange',(req,res) => {
         res.send(false)
     }
     
-    fs.readFile('./json/'+seatsMode, 'utf8',(err ,data50) => {
-        fs.writeFile('./json/seats.json', data50, (err)=>{
+    fs.readFile('./json/'+seatsMode, 'utf8',(err ,result) => {
+        fs.writeFile('./json/seats.json', result, (err)=>{
             if (err){
                 res.send(false)
             }else{

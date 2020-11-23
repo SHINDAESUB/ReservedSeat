@@ -128,13 +128,13 @@
         </div>  
         <br>
       <div class="seat-title-box text-center" >입구</div>
-        <div class="count"> <div class="grey--text ">좌석 현황 : <strong class="primary--text ">{{selectedSeats}}</strong> / <strong class="grey--text "> {{activeSeats}}</strong></div></div>
         <div class= "chapel-text">
-        <div  class="seat enable"></div>선택가능
-        <div  class="seat disable"></div>선택불가
-        <div  class="seat greenBox"></div>지정좌석
-        <div  class="seat blueBox"></div>선택완료
-      </div>
+          <div  class="seat enable"></div>선택가능
+          <div  class="seat disable"></div>선택불가
+          <div  class="seat greenBox"></div>지정좌석
+          <div  class="seat blueBox"></div>선택완료
+        </div>
+        <div class="count"> <div class="grey--text ">좌석 현황 : <strong class="primary--text ">{{selectedSeats}}</strong> / <strong class="grey--text "> {{activeSeats}}</strong></div></div>
     </v-container>
       </template>
       <v-card>
@@ -260,13 +260,18 @@
                       >
                         <v-radio
                           label="거리두기 1 단계 수용 좌석 50%"
-                          color="red"
+                          color="primary"
                           value="50"
                         ></v-radio>
                         <v-radio
-                          label="거리두기 1.5 단계 수용  좌석 30%"
-                          color="primary"
+                          label="거리두기 1.5 단계 수용 좌석 30%"
+                          color="green"
                           value="30"
+                        ></v-radio>
+                        <v-radio
+                          label="거리두기 2 단계 수용 좌석 10%"
+                          color="red"
+                          value="10"
                         ></v-radio>
                       </v-radio-group>
                     </v-col> 
