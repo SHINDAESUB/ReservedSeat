@@ -81,8 +81,10 @@ app.post('/api/seatsModify',(req,res) => {
 
 app.post('/api/seatsChange',(req,res) => {
     console.log("선택한 단계 :"+ req.body.params.step)
-    if(req.body.params.step === '10'){
-        seatsMode = 'seats(10%).json'
+    if(req.body.params.step === '0'){
+        seatsMode = 'seats(0%).json'
+    }else if(req.body.params.step === '20'){
+        seatsMode = 'seats(20%).json'
     }else if(req.body.params.step === '30') {
         seatsMode = 'seats(30%).json'
     }else if(req.body.params.step === '50') {

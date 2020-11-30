@@ -269,9 +269,14 @@
                           value="30"
                         ></v-radio>
                         <v-radio
-                          label="거리두기 2 단계 수용 좌석 10%"
+                          label="거리두기 2 단계 수용 좌석 20%"
                           color="red"
-                          value="10"
+                          value="20"
+                        ></v-radio>
+                        <v-radio
+                          label="거리두기 2.5 단계 수용 좌석 0%"
+                          color="black"
+                          value="0"
                         ></v-radio>
                       </v-radio-group>
                     </v-col> 
